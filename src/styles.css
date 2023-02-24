@@ -1,0 +1,12 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.responsive-chord {
+  height: 700px;
+  width: auto;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
