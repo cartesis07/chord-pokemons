@@ -1,6 +1,6 @@
 import "./styles.css";
 import { MyResponsiveChord } from "./MyResponsiveChord";
-import { data, keys } from "./data";
+import { data, keys } from "./data/arrays/Pokemon Type Stats";
 
 export default function App() {
   return (
