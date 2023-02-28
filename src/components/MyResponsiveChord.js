@@ -20,20 +20,20 @@ export function MyResponsiveChord(props) {
       inactiveArcOpacity={0.25}
       arcBorderColor={{
         from: "color",
-        modifiers: [["darker", 0.6]]
+        modifiers: [["darker", 0.6]],
       }}
       activeRibbonOpacity={0.75}
       inactiveRibbonOpacity={0.25}
       ribbonBorderColor={{
         from: "color",
-        modifiers: [["darker", 0.6]]
+        modifiers: [["darker", 0.6]],
       }}
       labelRotation={-90}
       labelTextColor={{
         from: "color",
-        modifiers: [["darker", 1]]
+        modifiers: [["darker", 1]],
       }}
-      colors={{ scheme: "nivo" }}
+      colors={{ scheme: "category10" }}
       motionConfig="stiff"
       legends={[
         {
@@ -53,11 +53,11 @@ export function MyResponsiveChord(props) {
             {
               on: "hover",
               style: {
-                itemTextColor: "#000"
-              }
-            }
-          ]
-        }
+                itemTextColor: "#000",
+              },
+            },
+          ],
+        },
       ]}
     />
   );

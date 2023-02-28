@@ -5,6 +5,9 @@
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/material": "^5.11.11",
     "@nivo/chord": "0.79.1",
     "@nivo/core": "0.79.0",
     "prop-types": "15.8.1",
