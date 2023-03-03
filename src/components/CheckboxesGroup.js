@@ -23,25 +23,17 @@ export default function CheckboxesGroup({ data, keys }) {
       }
     });
 
-    // const new_chord_data = state.chord_data.filter((item, j) => {
-    //   console.log(item);
-    //   if (new_type_selector[j] === True) {
-    //     return item;
-    //   } else {
-    //     return;
-    //   }
-    // });
+    let new_chord_data = [];
+    let new_chord_keys = [];
 
-    const new_chord_keys = state.chord_keys.filter((item, j) => {
-      console.log(item);
-      if (new_type_selector[j] === True) {
-        return item;
-      } else {
-        return;
+    for (let i = 0; i < new_type_selector.length; i += 1) {
+      if (new_type_selector[i] === true) {
+        new_chord_data.push(data[i]);
+        new_chord_keys.push(keys[i]);
       }
-    });
+    }
 
-    console.log(new_chord_keys);
+    console.log(new_chord_data);
 
     setState({
       ...state,
