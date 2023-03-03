@@ -5,6 +5,7 @@ import FormControl from "@mui/material/FormControl";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormHelperText from "@mui/material/FormHelperText";
 import Checkbox from "@mui/material/Checkbox";
+import Typography from "@mui/material/Typography";
 import { MyResponsiveChord } from "./MyResponsiveChord";
 
 export default function CheckboxesGroup({ data, keys }) {
@@ -67,7 +68,11 @@ export default function CheckboxesGroup({ data, keys }) {
                   size="small"
                 />
               }
-              label={name}
+              label={
+                <Typography variant="body2" color="textSecondary">
+                  {name}
+                </Typography>
+              }
             />
           );
         })}
