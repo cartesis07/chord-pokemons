@@ -1,5 +1,6 @@
 // install (please make sure versions match peerDependencies)
 // yarn add @nivo/core @nivo/chord
+import { getInitColorSchemeScript } from "@mui/system";
 import { ResponsiveChord } from "@nivo/chord";
 
 // make sure parent container have a defined height when using
@@ -33,7 +34,8 @@ export function MyResponsiveChord(props) {
         from: "color",
         modifiers: [["darker", 1]],
       }}
-      colors={{ scheme: "category10" }}
+      // colors={{ scheme: "category10" }}
+      colors={props.colors}
       motionConfig="stiff"
       legends={[
         {

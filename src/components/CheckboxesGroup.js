@@ -48,10 +48,32 @@ export default function CheckboxesGroup({ data, keys }) {
     water,
   ];
 
+  const colors = [
+    "red",
+    "black",
+    "white",
+    "green",
+    "yellow",
+    "blue",
+    "grey",
+    "purple",
+    "pink",
+    "white",
+    "orange",
+    "brown",
+    "red",
+    "yellow",
+    "black",
+    "white",
+    "green",
+    "yellow",
+  ];
+
   const [state, setState] = React.useState({
     type_selector: new Array(keys.length).fill(true),
     chord_data: data,
     chord_keys: keys,
+    chord_colors: colors,
   });
 
   const handleChange = (e, index) => {
@@ -65,11 +87,13 @@ export default function CheckboxesGroup({ data, keys }) {
 
     let new_chord_data = [];
     let new_chord_keys = [];
+    let new_chord_colors = [];
 
     for (let i = 0; i < new_type_selector.length; i += 1) {
       if (new_type_selector[i] === true) {
         new_chord_data.push(data[i]);
         new_chord_keys.push(keys[i]);
+        new_chord_colors.push(colors[i]);
       }
     }
 
@@ -78,13 +102,18 @@ export default function CheckboxesGroup({ data, keys }) {
       type_selector: new_type_selector,
       chord_keys: new_chord_keys,
       chord_data: new_chord_data,
+      chord_colors: new_chord_colors,
     });
   };
 
   return (
     <>
       <div className="responsive-chord">
-        <MyResponsiveChord data={state.chord_data} keys={state.chord_keys} />
+        <MyResponsiveChord
+          data={state.chord_data}
+          keys={state.chord_keys}
+          colors={state.chord_colors}
+        />
       </div>{" "}
       <FormControl
         sx={{ m: 3 }}
@@ -92,7 +121,7 @@ export default function CheckboxesGroup({ data, keys }) {
         variant="standard"
         style={{ display: "flex", flexDirection: "row" }}
       >
-        <FormLabel component="legend">Choose Pokemon Types</FormLabel>
+        <FormLabel component="legend">Select Pokemon Types</FormLabel>
         {keys.map(function (name, index) {
           return (
             <FormControlLabel
