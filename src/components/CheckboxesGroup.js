@@ -7,6 +7,7 @@ import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 import { MyResponsiveChord } from "./MyResponsiveChord";
 import { MyResponsiveBar } from "./MyResponsiveBar";
+import { MyResponsiveRadar } from "./MyResponsiveRadar";
 import { colors } from "../data/arrays/Pokemon Type Stats";
 
 import bug from "../images/Bug.png";
@@ -28,7 +29,12 @@ import rock from "../images/Rock.png";
 import steel from "../images/Steel.png";
 import water from "../images/Water.png";
 
-export default function CheckboxesGroup({ data, keys, score_data }) {
+export default function CheckboxesGroup({
+  data,
+  keys,
+  score_data,
+  stats_data,
+}) {
   const imagesArray = [
     normal,
     fire,
@@ -56,6 +62,7 @@ export default function CheckboxesGroup({ data, keys, score_data }) {
     chord_keys: keys,
     chord_colors: colors,
     line_data: score_data,
+    radar_data: stats_data,
   });
 
   const handleChange = (e, index) => {
@@ -151,6 +158,9 @@ export default function CheckboxesGroup({ data, keys, score_data }) {
       </div>{" "}
       <div className="line-chart">
         <MyResponsiveBar data={state.line_data} keys={keys} />
+      </div>
+      <div className="line-chart">
+        <MyResponsiveRadar keys={keys} data={state.radar_data} />
       </div>
     </>
   );

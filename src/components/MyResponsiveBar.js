@@ -1,5 +1,4 @@
 import { ResponsiveBar } from "@nivo/bar";
-import { colors } from "../data/arrays/Pokemon Type Stats";
 
 export function MyResponsiveBar(props) {
   return (
@@ -11,7 +10,7 @@ export function MyResponsiveBar(props) {
       padding={0.3}
       valueScale={{ type: "linear" }}
       indexScale={{ type: "band", round: true }}
-      colors={colors}
+      colors={["#fbb759", "#a9ebfc"]}
       defs={[
         {
           id: "dots",
