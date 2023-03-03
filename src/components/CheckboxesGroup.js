@@ -6,6 +6,8 @@ import Checkbox from "@mui/material/Checkbox";
 import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 import { MyResponsiveChord } from "./MyResponsiveChord";
+import { MyResponsiveBar } from "./MyResponsiveBar";
+import { colors } from "../data/arrays/Pokemon Type Stats";
 
 import bug from "../images/Bug.png";
 import dark from "../images/Dark.png";
@@ -26,7 +28,7 @@ import rock from "../images/Rock.png";
 import steel from "../images/Steel.png";
 import water from "../images/Water.png";
 
-export default function CheckboxesGroup({ data, keys }) {
+export default function CheckboxesGroup({ data, keys, score_data }) {
   const imagesArray = [
     normal,
     fire,
@@ -48,32 +50,12 @@ export default function CheckboxesGroup({ data, keys }) {
     fairy,
   ];
 
-  const colors = [
-    "#9e9e9e",
-    "#e92d2f",
-    "#2d95fb",
-    "#fcdc06",
-    "#409d29",
-    "#a9ebfc",
-    "#fbb759",
-    "#9846cf",
-    "#8c4e22",
-    "#a2d0f2",
-    "#ef5492",
-    "#dfe5b2",
-    "#bfb699",
-    "#bc86bc",
-    "#5665df",
-    "#907575",
-    "#83bccc",
-    "#f4a9f4",
-  ];
-
   const [state, setState] = React.useState({
     type_selector: new Array(keys.length).fill(true),
     chord_data: data,
     chord_keys: keys,
     chord_colors: colors,
+    line_data: score_data,
   });
 
   const handleChange = (e, index) => {
@@ -88,12 +70,14 @@ export default function CheckboxesGroup({ data, keys }) {
     let new_chord_data = [];
     let new_chord_keys = [];
     let new_chord_colors = [];
+    let new_score_data = [];
 
     for (let i = 0; i < new_type_selector.length; i += 1) {
       if (new_type_selector[i] === true) {
         new_chord_data.push(data[i]);
         new_chord_keys.push(keys[i]);
         new_chord_colors.push(colors[i]);
+        new_score_data.push(score_data[i]);
       }
     }
 
@@ -103,25 +87,25 @@ export default function CheckboxesGroup({ data, keys }) {
       chord_keys: new_chord_keys,
       chord_data: new_chord_data,
       chord_colors: new_chord_colors,
+      line_data: new_score_data,
     });
   };
 
   return (
     <>
-      <div className="responsive-chord">
-        <MyResponsiveChord
-          data={state.chord_data}
-          keys={state.chord_keys}
-          colors={state.chord_colors}
-        />
-      </div>{" "}
       <FormControl
         sx={{ m: 3 }}
         component="fieldset"
         variant="standard"
-        style={{ display: "flex", flexDirection: "row" }}
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          position: "sticky",
+          top: 0,
+          backgroundColor: "white",
+          zIndex: 1000,
+        }}
       >
-        <FormLabel component="legend">Select Pokemon Types</FormLabel>
         {keys.map(function (name, index) {
           return (
             <FormControlLabel
@@ -158,6 +142,16 @@ export default function CheckboxesGroup({ data, keys }) {
           );
         })}
       </FormControl>
+      <div className="responsive-chord">
+        <MyResponsiveChord
+          data={state.chord_data}
+          keys={state.chord_keys}
+          colors={state.chord_colors}
+        />
+      </div>{" "}
+      <div className="line-chart">
+        <MyResponsiveBar data={state.line_data} keys={keys} />
+      </div>
     </>
   );
 }
