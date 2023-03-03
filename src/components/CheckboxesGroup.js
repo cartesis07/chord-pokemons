@@ -45,30 +45,33 @@ export default function CheckboxesGroup({ data, keys }) {
 
   return (
     <>
-      <Box sx={{ display: "flex" }}>
-        <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
-          <FormLabel component="legend">Choose Pokemon Types</FormLabel>
-          {keys.map(function (name, index) {
-            return (
-              <FormControlLabel
-                key={index}
-                control={
-                  <Checkbox
-                    checked={state.type_selector[index]}
-                    name={keys[index]}
-                    onChange={(e) => handleChange(e, index)}
-                  />
-                }
-                label={name}
-              />
-            );
-          })}
-          <FormHelperText>Select at least two families</FormHelperText>
-        </FormControl>
-      </Box>{" "}
       <div className="responsive-chord">
         <MyResponsiveChord data={state.chord_data} keys={state.chord_keys} />
       </div>{" "}
+      <FormControl
+        sx={{ m: 3 }}
+        component="fieldset"
+        variant="standard"
+        style={{ display: "flex", flexDirection: "row" }}
+      >
+        <FormLabel component="legend">Choose Pokemon Types</FormLabel>
+        {keys.map(function (name, index) {
+          return (
+            <FormControlLabel
+              key={index}
+              control={
+                <Checkbox
+                  checked={state.type_selector[index]}
+                  name={keys[index]}
+                  onChange={(e) => handleChange(e, index)}
+                  size="small"
+                />
+              }
+              label={name}
+            />
+          );
+        })}
+      </FormControl>
     </>
   );
 }

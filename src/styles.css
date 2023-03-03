@@ -4,9 +4,6 @@
 }
 
 .responsive-chord {
-  height: 700px;
+  height: 80vh;
   width: auto;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
 }
