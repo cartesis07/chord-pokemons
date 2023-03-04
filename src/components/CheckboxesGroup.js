@@ -78,6 +78,7 @@ export default function CheckboxesGroup({
     let new_chord_keys = [];
     let new_chord_colors = [];
     let new_score_data = [];
+    let new_radar_data = [];
 
     for (let i = 0; i < new_type_selector.length; i += 1) {
       if (new_type_selector[i] === true) {
@@ -88,6 +89,21 @@ export default function CheckboxesGroup({
       }
     }
 
+    for (let j = 0; j < stats_data.length; j += 1) {
+      let element = {};
+      for (let k = 0; k < new_type_selector.length; k += 1) {
+        if (new_type_selector[k] === true) {
+          element["FIELD1"] = stats_data[j]["FIELD1"];
+          element[keys[k]] = stats_data[j][keys[k]];
+        }
+      }
+      new_radar_data.push(element);
+    }
+
+    console.log(stats_data);
+    console.log(new_radar_data);
+    console.log(new_chord_keys);
+
     setState({
       ...state,
       type_selector: new_type_selector,
@@ -95,6 +111,7 @@ export default function CheckboxesGroup({
       chord_data: new_chord_data,
       chord_colors: new_chord_colors,
       line_data: new_score_data,
+      radar_data: new_radar_data,
     });
   };
 
@@ -160,7 +177,7 @@ export default function CheckboxesGroup({
         <MyResponsiveBar data={state.line_data} keys={keys} />
       </div>
       <div className="line-chart">
-        <MyResponsiveRadar keys={keys} data={state.radar_data} />
+        <MyResponsiveRadar keys={state.chord_keys} data={state.radar_data} />
       </div>
     </>
   );

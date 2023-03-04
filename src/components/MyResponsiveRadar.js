@@ -6,7 +6,7 @@ export function MyResponsiveRadar(props) {
     <ResponsiveRadar
       data={props.data}
       keys={props.keys}
-      indexBy="taste"
+      indexBy="FIELD1"
       valueFormat=">-.2f"
       margin={{ top: 70, right: 80, bottom: 40, left: 80 }}
       borderColor={{ from: "color" }}
